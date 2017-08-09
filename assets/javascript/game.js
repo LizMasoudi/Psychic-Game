@@ -7,7 +7,6 @@ var message = document.getElementById("message");
 var winsCounter = 0;
 var lossesCounter = 0;
 var guessesRemainingCounter = 9;
-var myGuess;
 
 winsJS.innerHTML = "Wins: " + winsCounter;
 lossesJS.innerHTML = "Losses: " + lossesCounter;
@@ -16,19 +15,8 @@ guessesRemainingJS.innerHTML = "Guesses Remaining: " + guessesRemainingCounter;
 
 // Randomly chooses a choice from the possibilities array, which becomes my guess.
 var possiblities = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-myGuess = possiblities[Math.floor(Math.random() * possiblities.length)+1];
+var myGuess = possiblities[Math.floor(Math.random() * possiblities.length)+1];
 console.log(myGuess);
-
-
-// A reset function (reset guess counter and write to DOM, reset guess list and write to DOM
-// and pick a new letter for the computer guess)
-function reset() {
-	guessesRemainingCounter=9;
-	message.innerHTML="";
-	guessesJS.innerHTML="Guesses: ";
-
-}
-
 
 // An incorrect user guess (counter - 1, and write it to the DOM)
 function guess() {
@@ -55,6 +43,18 @@ function lose () {
 	reset();
 
 }
+
+// A reset function (reset guess counter and write to DOM, reset guess list and write to DOM
+// and pick a new letter for the computer guess)
+function reset() {
+	guessesRemainingCounter=9;
+	message.innerHTML="";
+	guessesJS.innerHTML="Guesses: ";
+	myGuess = possiblities[Math.floor(Math.random() * possiblities.length)+1];
+	console.log(myGuess);
+
+}
+
 
 document.onkeyup = function(event) {
 
